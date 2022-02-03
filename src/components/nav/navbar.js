@@ -1,14 +1,14 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
-import "./NavBar.css"
+import "./navbar.css"
 
 export const NavBar = () => {
     const history = useHistory()
     return (
         <ul className="navbar">
             <li className="navbar__item">
-                Navigation link
+                <Link to="/games">Games</Link>
             </li>
             <li className="navbar__item">
                 Navigation link
