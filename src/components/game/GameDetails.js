@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom/cjs/react-router-dom.min"
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min"
 import { getSingleGame } from "./GameManager"
 
 export const GameDetails = () => {
     const [game, setGame] = useState({})
     const { gameId } = useParams()
     const parsedId = parseInt(gameId)
+    const history = useHistory()
 
     useEffect(
         () => {
@@ -27,10 +28,7 @@ export const GameDetails = () => {
             <div>Estimated time to play:   {game.est_time_to_play}</div>
             <div>Age Recommendation:    {game.age_recomendation}</div>
             <div>Category: {game.category?.title}</div>
-
-
-
-
+            <button onClick={() => {history.push(`/games/${game.id}/review`)}}>Review Game</button>
 
         </>
     )

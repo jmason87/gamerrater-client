@@ -29,5 +29,16 @@ export const createGame = (game) => {
         .then(res => res.json())
 }
 
+export const createReview = (review) => {
+    return fetch("http://localhost:8000/games", {
+        method: "POST",
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("lu_token")}`,
+            "content-Type": "application/json"
+        },
+        body: JSON.stringify(game)
+    })
+}
+
 
 
