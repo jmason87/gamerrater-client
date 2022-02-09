@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min"
 export const Games = () => {
     const [games, setGames] = useState([])
     const [game, setGame] = useState({})
-    const { gameId } = useParams({})
+    const { gameId } = useParams()
     const parsedId = parseInt(gameId)
 
     useEffect(

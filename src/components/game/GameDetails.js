@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min"
-import { getSingleGame } from "./GameManager"
+import { getReviews, getSingleGame } from "./GameManager"
 
 export const GameDetails = () => {
     const [game, setGame] = useState({})
+    const [reviews, setReviews] = useState([])
     const { gameId } = useParams()
     const parsedId = parseInt(gameId)
     const history = useHistory()
@@ -15,8 +16,12 @@ export const GameDetails = () => {
                     setGame(data)
                 })
         },
-        [ parsedId ]
+        []
     )
+
+    useEffect(() => {
+        getReviews().then(setReviews)
+    }, [])
 
     return (
         <>
@@ -28,7 +33,19 @@ export const GameDetails = () => {
             <div>Estimated time to play:   {game.est_time_to_play}</div>
             <div>Age Recommendation:    {game.age_recomendation}</div>
             <div>Category: {game.category?.title}</div>
-            <button onClick={() => {history.push(`/games/${game.id}/review`)}}>Review Game</button>
+            <button onClick={() => { history.push(`/games/${game.id}/review`) }}>Review Game</button>
+            <div>
+                <h2>Reviews</h2>
+                {
+                    reviews.map(
+                        (review) => {
+                            if (review.game?.id === parsedId) {
+                                return <p>{review.content}</p>
+                            }
+                        }
+                    )
+                }
+            </div>
 
         </>
     )
