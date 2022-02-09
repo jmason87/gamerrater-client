@@ -19,14 +19,14 @@ export const GameDetails = () => {
 
     return (
         <>
-            <div>{game.title}</div>
-            <div>{game.description}</div>
-            <div>{game.designer}</div>
-            <div>{game.year_released}</div>
-            <div>{game.number_of_players}</div>
-            <div>{game.est_time_to_play}</div>
-            <div>{game.age_recomendation}</div>
-            {/* <div>{game.category}</div> */}
+            <div>Title:    {game.title}</div>
+            <div>Description:   {game.description}</div>
+            <div>Designer:    {game.designer}</div>
+            <div>Year Released:    {game.year_released}</div>
+            <div>Number of Players:    {game.number_of_players}</div>
+            <div>Estimated time to play:   {game.est_time_to_play}</div>
+            <div>Age Recommendation:    {game.age_recomendation}</div>
+            <div>Category: {game.category?.title}</div>
 
 
 
