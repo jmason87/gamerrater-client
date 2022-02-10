@@ -50,5 +50,27 @@ export const getReviews = () => {
         .then(res => res.json())
 }
 
+export const updateGame = (game, id) => {
+    return fetch (`http://localhost:8000/games/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem("lu_token")}`
+        },
+        body: JSON.stringify(game)
+    })
+    .then(getGames)
+}
+
+export const createRating = (rating) => {
+    return fetch("http://localhost:8000/ratings", {
+        method: "POST",
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("lu_token")}`,
+            "content-Type": "application/json"
+        },
+        body: JSON.stringify(rating)
+    })
+}
 
 
