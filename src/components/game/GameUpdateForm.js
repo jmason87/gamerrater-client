@@ -54,6 +54,8 @@ export const GameUpdateForm = () => {
             .then(history.push("/games"))
     }
 
+    const [catArray, setCatArray] = useState([])
+
 
     return (
         <>
@@ -132,18 +134,17 @@ export const GameUpdateForm = () => {
                     </div>
                     <div>
                         <label>Category</label>
-                        <select name="category" >
-                            <option>Select a Category</option>
                             {
                                 categories.map(category => {
-                                    if (game.category?.id === category.id) {
-                                    return <option value={category.id} selected>{category.title}</option>
-                                } else {
-                                    return <option value={category.id}>{category.title}</option>
-                                }
+                                    return <div>
+                                           <p> <input 
+                                                type="checkbox" 
+                                                name="cat"
+                                                value={category.id}
+                                                onChange={e => setCatArray(e.target.value)}
+                                                />{category.title}</p></div>
                                 })
                             }
-                        </select>
                     </div> 
                 </fieldset>
                 <button onClick={updatedEditedGame}>Update</button>

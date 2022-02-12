@@ -73,4 +73,52 @@ export const createRating = (rating) => {
     })
 }
 
+export const getRatings = () => {
+    return fetch(`http://localhost:8000/ratings`, {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("lu_token")}`
+        }
+    })
+        .then(res => res.json())
+}
 
+export const createImage = (image) => {
+    return fetch('http://localhost:8000/images', {
+        method: "POST",
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("lu_token")}`,
+            "content-Type": "application/json"
+        },
+        body: JSON.stringify(image)
+    })
+        .then(res => res.json())
+}
+
+export const searchGames = (searchTerm) => {
+    return fetch(`http://localhost:8000/games?q=${searchTerm}`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("lu_token")}`
+        }
+    })
+        .then(response => response.json())
+}
+
+export const getImages = () => {
+    return fetch("http://localhost:8000/images", {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("lu_token")}`
+        }
+    })
+
+        .then(res => res.json())
+}
+
+export const deleteImage = (id) => {
+    return fetch(`http://localhost:8000/images/${id}`, {
+        method: "DELETE",
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("lu_token")}`
+        }
+    })
+    .then(getImages)
+}

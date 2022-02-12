@@ -14,7 +14,7 @@ export const GameForm = () => {
         number_of_players: 0,
         time_to_play: 0,
         age_recommendation: 0,
-        category: 0
+        category: []
     })
 
     useEffect(() => {
@@ -64,14 +64,20 @@ export const GameForm = () => {
                     </div>
                     <div>
                         <label>Category</label>
-                        <select name="category" onChange={changeGameState}>
-                            <option>Choose a Category</option>
+                        {/* <select name="category" onChange={changeGameState}>
+                            <option>Choose a Category</option> */}
                             {
                                 categories.map(category => {
-                                    return <option value={category.id}>{category.title}</option>
+                                    return <div>
+                                           <p> <input 
+                                                type="checkbox" 
+                                                name="cat"
+                                                value={category.id}
+                                                onChange={changeGameState}
+                                                />{category.title}</p></div>
                                 })
                             }
-                        </select>
+                        {/* </select> */}
                     </div>
                 </fieldset>
                 <button type="submit"
